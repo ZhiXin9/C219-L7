@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/https//ZhiXin9.github.io/C219-L7/static/css/main.cbbc5402.css",
+    "main.js": "/https//ZhiXin9.github.io/C219-L7/static/js/main.b320e2eb.js",
+    "index.html": "/https//ZhiXin9.github.io/C219-L7/index.html",
+    "main.cbbc5402.css.map": "/https//ZhiXin9.github.io/C219-L7/static/css/main.cbbc5402.css.map",
+    "main.b320e2eb.js.map": "/https//ZhiXin9.github.io/C219-L7/static/js/main.b320e2eb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cbbc5402.css",
+    "static/js/main.b320e2eb.js"
+  ]
+}
