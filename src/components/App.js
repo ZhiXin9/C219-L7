@@ -1,48 +1,41 @@
-// Initial packing items
-const initialItems = [
-  { id: 1, description: "Shirt", quantity: 5, packed: false },
-  { id: 2, description: "Pants", quantity: 2, packed: false },
-];
-
-function Logo() {
-  return <h1>My Travel List</h1>;
-}
-
-function Form() {
-  return (
-    <form className="add-form">
-      <h3>What do you need to pack?</h3>
-    </form>
-  );
-}
-
-function PackingList() {
-  return (
-    <div className="list">
-      <ul>
-        {initialItems.map((item) => (
-          <li>{item.description}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function Stats() {
-  return (
-    <footer className="stats">
-      <em>You have X items in the list. You already packed Y (Z%).</em>
-    </footer>
-  );
-}
-
+import React, { useState } from 'react';
+import Logo from './Logo';
+import Form from './Form';
+import PackingList from './PackingList';
+import Stats from './Stats';
+import Item from './Item';
 function App() {
+  const [items, setItems] = useState([]);
+
+  // Add new item to the list
+  function handleAddItem(item) {
+    setItems((prevItems) => [...prevItems, item]);
+  }
+
+  // Update packed status of an item
+  function handleUpdateItem(itemId) {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === itemId ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+
+  // Delete an item
+  function handleDeleteItem(itemId) {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
-      <Stats />
+      <Form addItem={handleAddItem} />
+      <PackingList
+        items={items}
+        updateItem={handleUpdateItem}
+        deleteItem={handleDeleteItem}
+      />
+      <Stats items={items} />
     </div>
   );
 }
